@@ -44,8 +44,10 @@ class BriefEditorTab(IMessageEditorTab):
 
     def getMessage(self):
         """Combining headers and body parts of the message."""
-        headers = self._txtHeaders.getText()
-        main_parts = self._txtInput.getMessage().split("\r\n")
+        headers = self._txtHeaders.getText().tostring()
+        message = self._txtInput.getMessage().tostring()
+
+        main_parts = message.split("\r\n")
         first_line = main_parts[0]
         body = "\r\n".join(main_parts[2:])
 
